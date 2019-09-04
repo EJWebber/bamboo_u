@@ -18,8 +18,15 @@ class WBGoal extends React.Component {
     }
 
     handleClick = () => {
-        const dailyGoal = {user_wb_goal_id: this.props.goal.id, complete: false}
+        const dailyGoal = {user_wb_goal_id: this.props.goal.id, complete: false, time: 0}
         API.postUserDBG(dailyGoal).then(this.props.addDBGoal)
+    }
+
+    completedDGs = () => {
+        const userDBGs =  this.props.user.user_db_goals.filter(udbg => udbg.user_wb_goal_id === this.state.userWBG.id)
+        const completed = userDBGs.filter(udbg => udbg.complete === true)
+        const completedTimes = completed.map(goal => goal.time)
+        return completedTimes.reduce((a, b) => a + b, 0)
     }
 
     render(){
@@ -32,7 +39,7 @@ class WBGoal extends React.Component {
             <Grid divided='vertically'>
             <Grid.Row columns={2}>
             <Grid.Column>
-                {filteredWBGs.activity} for {this.props.goal.time} minutes this week
+                {filteredWBGs.activity} for {this.props.goal.time} minutes this week ({(this.completedDGs())}/{this.props.goal.time})
             </Grid.Column>
              <Grid.Column>
                 <Button onClick={this.handleClick}>Get a daily goal</Button>

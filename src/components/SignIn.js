@@ -5,6 +5,7 @@ class SignUp extends React.Component{
     state = {
         newName: "",
         newPassword: "",
+        confirmPassword: "",
         name: "",
         password: "",
         menu: true
@@ -92,10 +93,10 @@ class SignUp extends React.Component{
             <label> Confirm Password:</label>
             <input
               type="password"
-              placeholder="password"
-              value={this.state.newPassword}
+              placeholder="confirm password"
+              value={this.state.confirmPassword}
               onChange={this.handleChange}
-              name="newPassword"
+              name="confirmPassword"
             />
           </Form.Field>
           <Button type="submit" fluid><i className="user plus icon"></i> Sign Up</Button>

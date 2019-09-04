@@ -22,6 +22,11 @@ class WMGoal extends React.Component {
         API.postUserDMG(dailyGoal).then(this.props.addDMGoal)
     }
 
+    completedDGs = () => {
+        const userDMGs =  this.props.user.user_dm_goals.filter(udmg => udmg.user_wm_goal_id === this.state.userWMG.id)
+        return userDMGs.filter(udmg => udmg.complete === true)
+    }
+
     render(){
 
         const filteredWMGs = this.props.WMGs.filter(wmg => wmg.id === this.props.goal.wm_goal_id)[0]
@@ -32,7 +37,7 @@ class WMGoal extends React.Component {
                 <Grid divided='vertically'>
                 <Grid.Row columns={2}>
                     <Grid.Column>
-                        {filteredWMGs.activity} {this.props.goal.number} times this week
+                        {filteredWMGs.activity} {this.props.goal.number} times this week ({this.completedDGs().length}/{this.props.goal.number})
                     </Grid.Column>
                     <Grid.Column>
                         <Button onClick={this.handleClick}>Get a daily goal</Button>

@@ -14,6 +14,8 @@ const fetchUser = () => {
 .then(resp => resp.json())
 }
 
+
+
 const postUser = user => {
     return fetch(usersURL, 
     {method: "POST", 
@@ -88,8 +90,8 @@ body: JSON.stringify(newGoal)
 .then(resp => resp.json())
 }
 
-const updateUserDBG = goal => {
-   const newGoal = {complete: true}
+const updateUserDBG = (goal, time) => {
+   const newGoal = {complete: true, time: time}
     return fetch(`${userDBGURL}/${goal.id}`,
     {method: "PATCH",
 headers: {"Content-Type": "application/json"},
@@ -100,6 +102,7 @@ body: JSON.stringify(newGoal)
 
 export default {
     fetchUser,
+    
     postUser,
 
     fetchAllWBGs,

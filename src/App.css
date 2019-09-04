@@ -6,7 +6,7 @@ body {
 .App {
   text-align: center;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: auto;
   width: 100%;
   padding-right: 0px;
 }
@@ -59,24 +59,35 @@ body {
 }
 
 .dailygoals{
-  top: 70px;
-  position: absolute;
+  background-color: goldenrod;
 }
 
+
 .container{
+  background-color: tomato;
+}
+
+.history{
+  background-color: midnightblue;
+}
+
+.goals{
+  min-width: 30%;
+  
+}
+
+
+/* .container{
   top: 530px;
   background-color: tomato;
   position: relative;
-  height: 500px;
+  height: 480px;
   width: 100%;
-}
-
-.completed{
-  background-color: rgb(0, 248, 0);
+  padding: 2%;
 }
 
 .form{
   width: 100%;
   
   position: relative;
-}
+}  */

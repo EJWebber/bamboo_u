@@ -7,6 +7,8 @@ import WBGoalContainer from './components/WBGoalContainer'
 import { Button, Grid } from "semantic-ui-react"
 import DMGoal from "./components/DMGoal"
 import DBGoal from "./components/DBGoal"
+import MindHistory from "./components/MindHistory"
+import BodyHistory from "./components/BodyHistory"
 const moment = require('moment')
 
 class App extends React.Component {
@@ -16,7 +18,7 @@ class App extends React.Component {
     {error: "Please Login or Sign Up"},
     WBGs: [],
     WMGs: [],
-    toggle: true
+    toggle: false
   }
 
 componentDidMount(){
@@ -82,6 +84,36 @@ componentDidMount(){
       this.setState({ user:  {...this.state.user, user_dm_goals:[...this.state.user.user_dm_goals, goal] }})
     }
 
+    updateDBGoal = goal => {
+      const unfilteredGoals = this.state.user.user_db_goals
+      const filteredGoals = unfilteredGoals.filter(g => g.id !== goal.id)
+      const unsortedGoals = [...filteredGoals, goal]
+      const sortedGoals = unsortedGoals.sort(function(a, b) {
+        return a.id - b.id;
+    })
+      this.setState({
+        user: {...this.state.user, user_db_goals:
+          sortedGoals
+        }}
+        )
+    }
+
+    updateDMGoal = goal => {
+      const unfilteredGoals = this.state.user.user_dm_goals
+      const filteredGoals = unfilteredGoals.filter(g => g.id !== goal.id)
+      const unsortedGoals = [...filteredGoals, goal]
+      const sortedGoals = unsortedGoals.sort(function(a, b) {
+        return a.id - b.id;
+    })
+    
+      this.setState({
+        user: {...this.state.user, user_dm_goals:
+          sortedGoals
+        }}
+        )
+    }
+
+    
 
 
     dmTimeFilter = () => {
@@ -114,22 +146,26 @@ componentDidMount(){
         <Button onClick={this.toggle}>Mind</Button>
        </Button.Group>
 
-        
-        <Grid divided='vertically' className="dailygoals">
-    <Grid.Row columns={2}>
-      <Grid.Column>
-      Daily Body Goal: {this.dbTimeFilter().map(dbg => <DBGoal dbg={dbg} WBGs={this.state.WBGs} user={this.state.user}/>)}
-      </Grid.Column>
-      <Grid.Column>
-      Daily Mind Goal: {this.dmTimeFilter().map(dmg => <DMGoal dmg={dmg} WMGs={this.state.WMGs} user={this.state.user}/>)}
-      </Grid.Column>
-    </Grid.Row>
-      </Grid>
       
       {this.state.toggle ?
-       <WMGoalContainer WMGs={this.state.WMGs} user={this.state.user} addWMGoal={this.addWMGoal} addDMGoal={this.addDMGoal} />
+       
+        <div>
+          <h1>Mind</h1>
+         <div className="dailygoals"><h2>Daily Goals</h2>{this.dmTimeFilter().map(dmg => <DMGoal dmg={dmg} WMGs={this.state.WMGs} user={this.state.user} updateDMGoal={this.updateDMGoal}/>)}</div>
+          <br />
+          <WMGoalContainer WMGs={this.state.WMGs} user={this.state.user} addWMGoal={this.addWMGoal} addDMGoal={this.addDMGoal} />
+          <br />
+          <MindHistory user={this.state.user} WMGs={this.state.WMGs}/>
+        </div>
         :
-       <WBGoalContainer WBGs={this.state.WBGs} user={this.state.user} addWBGoal={this.addWBGoal} addDBGoal={this.addDBGoal} />
+        <div>
+          <h1>Body</h1>
+           <div className="dailygoals"><h2>Daily Goals</h2> {this.dbTimeFilter().map(dbg => <DBGoal dbg={dbg} WBGs={this.state.WBGs} user={this.state.user} updateDBGoal={this.updateDBGoal}/>)}</div>
+           <br />
+          <WBGoalContainer WBGs={this.state.WBGs} user={this.state.user} addWBGoal={this.addWBGoal} addDBGoal={this.addDBGoal} />
+          <br />
+          <BodyHistory user={this.state.user} WBGs={this.state.WBGs} />
+        </div>
        }
        </div>
        }

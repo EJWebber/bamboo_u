@@ -14,30 +14,6 @@ state={
     formToggle: false
 }
 
-    // dropdownChange = e => {
-    //     // console.log(this.props.WMGs.filter(goal => goal.activity === e.target.innerText)[0].id)
-    //     this.setState({
-    //         activity: this.props.WBGs.filter(goal => goal.activity === e.target.innerText)[0]?
-    //         this.props.WBGs.filter(goal => goal.activity === e.target.innerText)[0].id
-    //         : this.props.WBGs[0].id
-    //     })
-    // }
-
-    // setTime = e => {
-    //     this.setState({
-    //         time: parseInt(e.target.value)
-    //     })
-    // }
-
-    // handleSubmit = () => {
-    //     this.state.time&&this.state.activity ? this.submitWeeklyGoal() : this.setState({toggleWarning:true})
-    // }
-
-    // submitWeeklyGoal = () => {
-    //     this.setState({toggleWarning:false})
-    //     let goal = {user_id: this.state.user, wb_goal_id: this.state.activity, complete: false, time: this.state.time}
-    //     API.postUserWBG(goal).then(resp => console.log(resp))
-    // }
 
     WBList(timeFiltered) {
         return (
@@ -73,7 +49,7 @@ state={
 
         return(
             <div className="container">
-                <h1>Weekly Goals</h1>
+                <h2>Weekly Goals</h2>
                {this.state.formToggle ? 
                 <WBGoalForm user={this.props.user} WBGs={this.props.WBGs} addWBGoal={this.props.addWBGoal} showForm={this.showForm}/> 
                 :

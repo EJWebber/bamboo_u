@@ -66,7 +66,7 @@ class WMGoalContainer extends React.Component {
         return (
             <div className="container">
                 
-                <h1>Weekly Goals</h1>
+                <h2>Weekly Goals</h2>
                 {this.state.formToggle ? 
                 <WMGoalForm user={this.props.user} WMGs={this.props.WMGs} addWMGoal={this.props.addWMGoal} showForm={this.showForm}/> 
                 :
