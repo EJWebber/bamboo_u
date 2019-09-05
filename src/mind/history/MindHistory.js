@@ -1,5 +1,5 @@
 import React from "react";
-import DMGoal from "./DMGoal";
+import DMGoal from "../daily/DMGoal";
 const moment = require("moment");
 
 class MindHistory extends React.Component {

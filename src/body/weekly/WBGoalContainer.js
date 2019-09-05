@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
-import WBGoalForm from "../components/WBGoalForm";
+import WBGoalForm from "./WBGoalForm";
 import WBGoal from "./WBGoal";
 const moment = require("moment");
 

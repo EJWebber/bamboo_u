@@ -1,7 +1,6 @@
 import React from "react";
-// import CreateDMGoal from "./CreateDMGoal"
 import { Button, Grid, Label } from "semantic-ui-react";
-import API from "../adapters/API";
+import API from "../../adapters/API";
 
 class WMGoal extends React.Component {
   state = {

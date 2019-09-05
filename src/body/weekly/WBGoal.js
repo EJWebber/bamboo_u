@@ -1,7 +1,7 @@
 import React from "react";
 // import CreateDBGoal from "./CreateDBGoal"
 import { Button, Grid, Label } from "semantic-ui-react";
-import API from "../adapters/API";
+import API from "../../adapters/API";
 
 class WBGoal extends React.Component {
   state = {

@@ -2,14 +2,16 @@ import React from "react";
 import "./App.css";
 import API from "./adapters/API";
 import SignIn from "./components/SignIn";
-import WMGoalContainer from "./components/WMGoalContainer";
-import WBGoalContainer from "./components/WBGoalContainer";
+import Body from "./body/Body";
+import Mind from "./mind/Mind";
+// import WMGoalContainer from "./components/WMGoalContainer";
+// import WBGoalContainer from "./components/WBGoalContainer";
 import { Button } from "semantic-ui-react";
-import DMGoal from "./components/DMGoal";
-import DBGoal from "./components/DBGoal";
-import MindHistory from "./components/MindHistory";
-import BodyHistory from "./components/BodyHistory";
-const moment = require("moment");
+// import DMGoal from "./components/DMGoal";
+// import DBGoal from "./components/DBGoal";
+// import MindHistory from "./components/MindHistory";
+// import BodyHistory from "./components/BodyHistory";
+// const moment = require("moment");
 
 class App extends React.Component {
   state = {
@@ -159,21 +161,21 @@ class App extends React.Component {
     });
   };
 
-  dmTimeFilter = () => {
-    const a = moment();
-    return this.state.user.user_dm_goals.filter(goal =>
-      // a.diff(new Date(goal.created_at), 'days') <= 0
-      a.isSame(moment(goal.created_at), "day")
-    );
-  };
+  // dmTimeFilter = () => {
+  //   const a = moment();
+  //   return this.state.user.user_dm_goals.filter(goal =>
+  //     // a.diff(new Date(goal.created_at), 'days') <= 0
+  //     a.isSame(moment(goal.created_at), "day")
+  //   );
+  // };
 
-  dbTimeFilter = () => {
-    const a = moment();
-    return this.state.user.user_db_goals.filter(goal =>
-      // a.diff(new Date(goal.created_at), 'days') <= 0
-      a.isSame(moment(goal.created_at), "day")
-    );
-  };
+  // dbTimeFilter = () => {
+  //   const a = moment();
+  //   return this.state.user.user_db_goals.filter(goal =>
+  //     // a.diff(new Date(goal.created_at), 'days') <= 0
+  //     a.isSame(moment(goal.created_at), "day")
+  //   );
+  // };
 
   render() {
     return (
@@ -192,10 +194,11 @@ class App extends React.Component {
               </Button>
               <Button.Group id="navbar">
                 <Button onClick={this.toggle}>Body</Button>
+                <Button>Home</Button>
                 <Button onClick={this.toggle}>Mind</Button>
               </Button.Group>
 
-              {this.state.toggle ? (
+              {/* {this.state.toggle ? (
                 <div>
                   <h1>Mind</h1>
                   <div className="dailygoals">
@@ -245,7 +248,23 @@ class App extends React.Component {
                   <br />
                   <BodyHistory user={this.state.user} WBGs={this.state.WBGs} />
                 </div>
-              )}
+              )} */}
+              <Body
+                user={this.state.user}
+                updateDBGoal={this.updateDBGoal}
+                WBGs={this.state.WBGs}
+                addWBGoal={this.addWBGoal}
+                addDBGoal={this.addDBGoal}
+                updateWBGoal={this.updateWBGoal}
+              />
+              <Mind
+                user={this.state.user}
+                updateDMGoal={this.updateDMGoal}
+                WMGs={this.state.WMGs}
+                addWMGoal={this.addWMGoal}
+                addDMGoal={this.addDMGoal}
+                updateWMGoal={this.updateWMGoal}
+              />
             </div>
           )}
         </header>
