@@ -1,12 +1,10 @@
-
 body {
   width: 100%;
-  
 }
 .App {
   text-align: center;
   overflow-y: scroll;
-  overflow-x: auto;
+  overflow-x: hidden;
   width: 100%;
   padding-right: 0px;
 }
@@ -42,40 +40,36 @@ body {
 }
 
 /* --------------------------- */
-#logout{
+#logout {
   position: fixed;
   left: 20px;
   top: 20px;
 }
-#title{
-    font-family: "DK Black Bamboo";
-
+#title {
+  font-family: "DK Black Bamboo";
 }
 
-#navbar{
+#navbar {
   position: fixed;
   right: 20px;
   top: 20px;
 }
 
-.dailygoals{
+.dailygoals {
   background-color: goldenrod;
 }
 
-
-.container{
+.container {
   background-color: tomato;
 }
 
-.history{
+.history {
   background-color: midnightblue;
 }
 
-.goals{
+.goals {
   min-width: 30%;
-  
 }
-
 
 /* .container{
   top: 530px;

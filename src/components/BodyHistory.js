@@ -16,7 +16,8 @@ class BodyHistory extends React.Component {
                 <h2>History</h2>
                 {this.completedUDBGs().reverse().map(goal => 
                 <div>
-                {moment(goal.updated_at)._i.split("").splice(0, 10).join("")} - 
+                {moment(goal.updated_at).format("ddd Do MMM")}
+                 - 
                 <DBGoal dbg={goal} WBGs={this.props.WBGs} user={this.props.user} updateDBGoal={this.updateDBGoal} />
                 </div>
                 )}
