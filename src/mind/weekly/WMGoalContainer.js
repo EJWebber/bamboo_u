@@ -12,7 +12,10 @@ class WMGoalContainer extends React.Component {
   WMList(timeFiltered) {
     return (
       <>
-        <Button onClick={this.showForm}>New Weekly Goal</Button>
+        You have {timeFiltered.length}/3 goals assigned:
+        {timeFiltered.length < 3 ? (
+          <Button onClick={this.showForm}>New Weekly Goal</Button>
+        ) : null}
         <br />
         <br />
         {timeFiltered.map(goal => (

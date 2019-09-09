@@ -4,6 +4,7 @@ import API from "./adapters/API";
 import SignIn from "./components/SignIn";
 import Body from "./body/Body";
 import Mind from "./mind/Mind";
+import Home from "./components/Home";
 // import WMGoalContainer from "./components/WMGoalContainer";
 // import WBGoalContainer from "./components/WBGoalContainer";
 import { Button } from "semantic-ui-react";
@@ -20,7 +21,8 @@ class App extends React.Component {
       { error: "Please Login or Sign Up" },
     WBGs: [],
     WMGs: [],
-    toggle: false
+    homeToggle: true,
+    BMtoggle: false
   };
 
   componentDidMount() {
@@ -63,18 +65,25 @@ class App extends React.Component {
     API.postUser({ name: newName, password: newPassword }).then(u =>
       u.error
         ? this.setState({ user: { error: "Name taken" } })
-        : this.setState({ user: u.user })
+        : this.setState({ user: u })
     );
   };
 
   logOut = () => {
     this.setState({
-      user: { error: "Please Login or Sign Up" }
+      user: { error: "Please Login or Sign Up" },
+      homeToggle: true
     });
   };
 
-  toggle = () => {
-    this.setState({ toggle: !this.state.toggle });
+  Btoggle = () => {
+    this.setState({ BMtoggle: true, homeToggle: false });
+  };
+  Mtoggle = () => {
+    this.setState({ BMtoggle: false, homeToggle: false });
+  };
+  homeToggle = () => {
+    this.setState({ homeToggle: true });
   };
 
   addWMGoal = goal => {
@@ -193,9 +202,9 @@ class App extends React.Component {
                 Log Out
               </Button>
               <Button.Group id="navbar">
-                <Button onClick={this.toggle}>Body</Button>
-                <Button>Home</Button>
-                <Button onClick={this.toggle}>Mind</Button>
+                <Button onClick={this.Btoggle}>Body</Button>
+                <Button onClick={this.homeToggle}>Home</Button>
+                <Button onClick={this.Mtoggle}>Mind</Button>
               </Button.Group>
 
               {/* {this.state.toggle ? (
@@ -249,22 +258,28 @@ class App extends React.Component {
                   <BodyHistory user={this.state.user} WBGs={this.state.WBGs} />
                 </div>
               )} */}
-              <Body
-                user={this.state.user}
-                updateDBGoal={this.updateDBGoal}
-                WBGs={this.state.WBGs}
-                addWBGoal={this.addWBGoal}
-                addDBGoal={this.addDBGoal}
-                updateWBGoal={this.updateWBGoal}
-              />
-              <Mind
-                user={this.state.user}
-                updateDMGoal={this.updateDMGoal}
-                WMGs={this.state.WMGs}
-                addWMGoal={this.addWMGoal}
-                addDMGoal={this.addDMGoal}
-                updateWMGoal={this.updateWMGoal}
-              />
+
+              {this.state.homeToggle ? (
+                <Home user={this.state.user} />
+              ) : this.state.BMtoggle ? (
+                <Body
+                  user={this.state.user}
+                  updateDBGoal={this.updateDBGoal}
+                  WBGs={this.state.WBGs}
+                  addWBGoal={this.addWBGoal}
+                  addDBGoal={this.addDBGoal}
+                  updateWBGoal={this.updateWBGoal}
+                />
+              ) : (
+                <Mind
+                  user={this.state.user}
+                  updateDMGoal={this.updateDMGoal}
+                  WMGs={this.state.WMGs}
+                  addWMGoal={this.addWMGoal}
+                  addDMGoal={this.addDMGoal}
+                  updateWMGoal={this.updateWMGoal}
+                />
+              )}
             </div>
           )}
         </header>

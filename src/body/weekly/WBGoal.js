@@ -1,7 +1,8 @@
 import React from "react";
 // import CreateDBGoal from "./CreateDBGoal"
-import { Button, Grid, Label } from "semantic-ui-react";
+import { Button, Label, Table, Icon, Progress } from "semantic-ui-react";
 import API from "../../adapters/API";
+const moment = require("moment");
 
 class WBGoal extends React.Component {
   state = {
@@ -51,36 +52,39 @@ class WBGoal extends React.Component {
     }
   };
 
+  dbTimeFilter = () => {
+    const a = moment();
+    return this.props.user.user_db_goals.filter(goal =>
+      a.isSame(moment(goal.created_at), "day")
+    );
+  };
+
   render() {
     const filteredWBGs = this.props.WBGs.filter(
       wbg => wbg.id === this.props.goal.wb_goal_id
     )[0];
-    // const timeFiltered = filteredWMGs.filter(goal => )
+
+    // {this.completedDGs()}/{this.props.goal.time}
     return (
       <div>
-        <Grid divided="vertically">
-          <Grid.Row columns={2}>
-            <Grid.Column>
-              {filteredWBGs.activity} for {this.props.goal.time} minutes this
-              week
-            </Grid.Column>
-            <Grid.Column>
-              {this.completedDGs() >= this.props.goal.time ? (
-                <Label color="green">
-                  {this.completedDGs()}/{this.props.goal.time}
-                </Label>
-              ) : (
-                <Label color="yellow">
-                  <Button compact onClick={this.handleClick}>
-                    Daily +
-                  </Button>
-                  {this.completedDGs()}/{this.props.goal.time}
-                </Label>
-              )}
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        <br />
+        <Table.Row textAlign="left">
+          {this.completedDGs() >= this.props.goal.time ? (
+            <Icon name="check circle" color="green" />
+          ) : this.dbTimeFilter().length < 3 ? (
+            <Icon
+              icon="plus circle"
+              onClick={this.handleClick}
+              color="yellow"
+            />
+          ) : (
+            <Icon name="circle outline" color="yellow" />
+          )}
+          {filteredWBGs.activity} for {this.props.goal.time} minutes total
+          <Progress
+            percent={(this.completedDGs() / this.props.goal.time) * 100}
+            indicating
+          />
+        </Table.Row>
       </div>
     );
   }

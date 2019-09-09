@@ -2,6 +2,7 @@ import React from "react";
 import DBGoalContainer from "./daily/DBGoalContainer";
 import WBGoalContainer from "./weekly/WBGoalContainer";
 import BodyHistory from "./history/BodyHistory";
+import { Header } from "semantic-ui-react";
 class Body extends React.Component {
   render() {
     return (
@@ -11,6 +12,7 @@ class Body extends React.Component {
           updateDBGoal={this.props.updateDBGoal}
           WBGs={this.props.WBGs}
         />
+
         <WBGoalContainer
           WBGs={this.props.WBGs}
           user={this.props.user}
@@ -18,7 +20,7 @@ class Body extends React.Component {
           addDBGoal={this.props.addDBGoal}
           updateWBGoal={this.props.updateWBGoal}
         />
-        <BodyHistory user={this.props.user} WBGs={this.props.WBGs} />
+        {/* <BodyHistory user={this.props.user} WBGs={this.props.WBGs} /> */}
       </div>
     );
   }

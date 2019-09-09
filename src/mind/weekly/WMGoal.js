@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, Label } from "semantic-ui-react";
 import API from "../../adapters/API";
+const moment = require("moment");
 
 class WMGoal extends React.Component {
   state = {
@@ -44,6 +45,13 @@ class WMGoal extends React.Component {
     }
   };
 
+  dmTimeFilter = () => {
+    const a = moment();
+    return this.props.user.user_dm_goals.filter(goal =>
+      a.isSame(moment(goal.created_at), "day")
+    );
+  };
+
   render() {
     const filteredWMGs = this.props.WMGs.filter(
       wmg => wmg.id === this.props.goal.wm_goal_id
@@ -63,9 +71,11 @@ class WMGoal extends React.Component {
                 </Label>
               ) : (
                 <Label color="yellow">
-                  <Button size="mini" onClick={this.handleClick}>
-                    Daily +
-                  </Button>
+                  {this.dmTimeFilter().length < 3 ? (
+                    <Button size="mini" onClick={this.handleClick}>
+                      Daily +
+                    </Button>
+                  ) : null}
                   {this.completedDGs().length}/{this.props.goal.number}
                 </Label>
               )}

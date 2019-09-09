@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Input, Label } from "semantic-ui-react";
+import { Button, Input, Label, Table } from "semantic-ui-react";
 import API from "../../adapters/API";
 
 class DBGoal extends React.Component {
@@ -33,30 +33,34 @@ class DBGoal extends React.Component {
   render() {
     return (
       <div>
-        {this.props.dbg.complete ? (
-          <Label className="goals">
-            <Button circular size="mini" icon="check" color="green" />
-            {this.filterForWBG().activity} - {this.props.dbg.time} mins
-          </Label>
-        ) : (
-          <Label className="goals">
-            <Button
-              circular
-              size="mini"
-              icon="check"
-              color="yellow"
-              onClick={this.handleClick}
-            />
-            {this.filterForWBG().activity}
-            <Input
-              size="mini"
-              placeholder="time"
-              onChange={e => this.setTime(e)}
-            />
-          </Label>
-        )}
-        <br />
-        <br />
+        <Table.Row textAlign="center">
+          {this.props.dbg.complete ? (
+            // <Table.Cell>
+            <div>
+              <Button circular size="mini" icon="check" color="green" />
+              {this.filterForWBG().activity} - {this.props.dbg.time} mins
+            </div>
+          ) : (
+            // </Table.Cell>
+            // <Table.Cell>
+            <div>
+              <Button
+                circular
+                size="mini"
+                icon="check"
+                color="yellow"
+                onClick={this.handleClick}
+              />
+              {this.filterForWBG().activity}
+              <Input
+                size="mini"
+                placeholder="time"
+                onChange={e => this.setTime(e)}
+              />
+            </div>
+            // </Table.Cell>
+          )}
+        </Table.Row>
       </div>
     );
   }

@@ -4,7 +4,10 @@ const moment = require("moment");
 
 class MindHistory extends React.Component {
   completedUDMGs = () => {
-    return this.props.user.user_dm_goals.filter(uwmg => uwmg.complete === true);
+    return this.props.user.user_dm_goals.filter(udmg => udmg.complete === true);
+  };
+  completedUWMGs = () => {
+    return this.props.user.user_wm_goals.filter(uwmg => uwmg.complete === true);
   };
   updateDMGoal = () => {
     console.log("Crisis Averted");
@@ -29,7 +32,17 @@ class MindHistory extends React.Component {
               />
             </div>
           ))}
-        {/* {this.props.user.user_wm_goals.map(uwmg => this.props.WMGs.filter(wmg => wmg.id === uwmg.wm_goal_id).activity)} */}
+        {this.completedUWMGs()
+          // .reverse()
+          .map(goal => (
+            <div>
+              {moment(goal.updated_at).format("ddd Do MMM")} -
+              {
+                this.props.WMGs.filter(wmg => wmg.id === goal.wm_goal_id)[0]
+                  .activity
+              }
+            </div>
+          ))}
       </div>
     );
   }

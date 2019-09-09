@@ -4,7 +4,10 @@ const moment = require("moment");
 
 class BodyHistory extends React.Component {
   completedUDBGs = () => {
-    return this.props.user.user_db_goals.filter(uwbg => uwbg.complete === true);
+    return this.props.user.user_db_goals.filter(udbg => udbg.complete === true);
+  };
+  completedUWBGs = () => {
+    return this.props.user.user_wb_goals.filter(uwbg => uwbg.complete === true);
   };
   updateDBGoal = () => {
     console.log("Crisis Averted");
@@ -28,6 +31,16 @@ class BodyHistory extends React.Component {
               />
             </div>
           ))}
+        {this.completedUWBGs().map(goal => (
+          <div>
+            {" "}
+            {moment(goal.updated_at).format("ddd Do MMM")} -{" "}
+            {
+              this.props.WBGs.filter(wbg => wbg.id === goal.wb_goal_id)[0]
+                .activity
+            }
+          </div>
+        ))}
       </div>
     );
   }
