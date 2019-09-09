@@ -1,6 +1,6 @@
 import React from "react";
 // import CreateDBGoal from "./CreateDBGoal"
-import { Button, Label, Table, Icon, Progress } from "semantic-ui-react";
+import { Button, Progress } from "semantic-ui-react";
 import API from "../../adapters/API";
 const moment = require("moment");
 
@@ -66,25 +66,31 @@ class WBGoal extends React.Component {
 
     // {this.completedDGs()}/{this.props.goal.time}
     return (
-      <div>
-        <Table.Row textAlign="left">
-          {this.completedDGs() >= this.props.goal.time ? (
-            <Icon name="check circle" color="green" />
-          ) : this.dbTimeFilter().length < 3 ? (
-            <Icon
-              icon="plus circle"
-              onClick={this.handleClick}
-              color="yellow"
-            />
-          ) : (
-            <Icon name="circle outline" color="yellow" />
-          )}
+      <div className="weeklyGoal">
+        {this.completedDGs() >= this.props.goal.time ? (
+          <Button size="mini" circular icon="check" color="green" />
+        ) : this.dbTimeFilter().length < 3 ? (
+          <Button
+            circular
+            icon="plus"
+            size="mini"
+            onClick={this.handleClick}
+            color="yellow"
+          />
+        ) : (
+          <Button size="mini" circular icon="circle outline" color="yellow" />
+        )}
+        {/* BREAK HERE */}
+        <div>
           {filteredWBGs.activity} for {this.props.goal.time} minutes total
           <Progress
-            percent={(this.completedDGs() / this.props.goal.time) * 100}
+            // percent={(this.completedDGs() / this.props.goal.time) * 100}
             indicating
+            value={this.completedDGs()}
+            total={this.props.goal.time}
+            progress="ratio"
           />
-        </Table.Row>
+        </div>
       </div>
     );
   }

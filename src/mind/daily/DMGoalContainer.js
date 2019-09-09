@@ -1,5 +1,6 @@
 import React from "react";
 import DMGoal from "./DMGoal";
+import { Divider, Header } from "semantic-ui-react";
 const moment = require("moment");
 
 class DMGoalContainer extends React.Component {
@@ -12,9 +13,11 @@ class DMGoalContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Daily:</h2>
-        You have {this.dmTimeFilter().length}/3 goals assigned:
+      <React.Fragment>
+        <Divider horizontal>
+          <Header as="h2">Daily</Header>
+        </Divider>
+        {/* {this.dmTimeFilter().length}/3 goals assigned: */}
         {this.dmTimeFilter().map(dmg => (
           <DMGoal
             dmg={dmg}
@@ -23,7 +26,7 @@ class DMGoalContainer extends React.Component {
             WMGs={this.props.WMGs}
           />
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 }

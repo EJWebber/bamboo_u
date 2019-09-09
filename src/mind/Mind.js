@@ -19,7 +19,7 @@ class Mind extends React.Component {
           addDMGoal={this.props.addDMGoal}
           updateWMGoal={this.props.updateWMGoal}
         />
-        <MindHistory user={this.props.user} WMGs={this.props.WMGs} />
+        {/* <MindHistory user={this.props.user} WMGs={this.props.WMGs} /> */}
       </div>
     );
   }

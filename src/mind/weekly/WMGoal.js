@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Label } from "semantic-ui-react";
+import { Button, Progress } from "semantic-ui-react";
 import API from "../../adapters/API";
 const moment = require("moment");
 
@@ -59,30 +59,33 @@ class WMGoal extends React.Component {
     // const timeFiltered = filteredWMGs.filter(goal => )
     return (
       <div>
-        <Grid divided="vertically">
-          <Grid.Row columns={2}>
-            <Grid.Column>
-              {filteredWMGs.activity} {this.props.goal.number} times this week
-            </Grid.Column>
-            <Grid.Column>
-              {this.completedDGs().length >= this.props.goal.number ? (
-                <Label color="green">
-                  {this.completedDGs().length}/{this.props.goal.number}
-                </Label>
-              ) : (
-                <Label color="yellow">
-                  {this.dmTimeFilter().length < 3 ? (
-                    <Button size="mini" onClick={this.handleClick}>
-                      Daily +
-                    </Button>
-                  ) : null}
-                  {this.completedDGs().length}/{this.props.goal.number}
-                </Label>
-              )}
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        <br />
+        {this.completedDGs().length >= this.props.goal.number ? (
+          <Button color="green" size="mini" circular icon="check" />
+        ) : this.dmTimeFilter().length < 3 ? (
+          <Button
+            size="mini"
+            circular
+            icon="plus"
+            onClick={this.handleClick}
+            color="yellow"
+          />
+        ) : (
+          <Button size="mini" circular icon="circle outline" color="yellow" />
+        )
+        // {this.completedDGs().length}/{this.props.goal.number}
+        }
+        <div>
+          {filteredWMGs.activity} {this.props.goal.number} times
+          <Progress
+            // percent={
+            //   (this.completedDGs().length / this.props.goal.number) * 100
+            // }
+            indicating
+            value={this.completedDGs().length}
+            total={this.props.goal.number}
+            progress="ratio"
+          />
+        </div>
       </div>
     );
   }

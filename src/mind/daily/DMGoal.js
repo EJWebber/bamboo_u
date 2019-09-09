@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import API from "../../adapters/API";
 
 class DMGoal extends React.Component {
@@ -24,12 +24,12 @@ class DMGoal extends React.Component {
     return (
       <div>
         {this.props.dmg.complete ? (
-          <Label className="goals">
+          <div>
             <Button size="mini" circular icon="check" color="green" />
             {this.filterForWMG().activity}
-          </Label>
+          </div>
         ) : (
-          <Label className="goals">
+          <div>
             <Button
               size="mini"
               circular
@@ -38,10 +38,8 @@ class DMGoal extends React.Component {
               onClick={this.handleClick}
             />
             {this.filterForWMG().activity}
-          </Label>
+          </div>
         )}
-        <br />
-        <br />
       </div>
     );
   }

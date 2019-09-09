@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon, Header, Divider } from "semantic-ui-react";
 import WMGoalForm from "./WMGoalForm";
 import WMGoal from "./WMGoal";
 const moment = require("moment");
@@ -12,12 +12,7 @@ class WMGoalContainer extends React.Component {
   WMList(timeFiltered) {
     return (
       <>
-        You have {timeFiltered.length}/3 goals assigned:
-        {timeFiltered.length < 3 ? (
-          <Button onClick={this.showForm}>New Weekly Goal</Button>
-        ) : null}
-        <br />
-        <br />
+        {/* {timeFiltered.length}/3 goals assigned: */}
         {timeFiltered.map(goal => (
           <div>
             <WMGoal
@@ -30,6 +25,11 @@ class WMGoalContainer extends React.Component {
             />
           </div>
         ))}
+        {timeFiltered.length < 3 ? (
+          <Button onClick={this.showForm}>
+            Weekly Goal <Icon name="plus" />
+          </Button>
+        ) : null}
       </>
     );
   }
@@ -51,8 +51,10 @@ class WMGoalContainer extends React.Component {
     const timeFiltered = this.timeFilter();
 
     return (
-      <div className="container">
-        <h2>Weekly Goals</h2>
+      <React.Fragment>
+        <Divider horizontal>
+          <Header as="h2">Weekly</Header>
+        </Divider>
         {this.state.formToggle ? (
           <WMGoalForm
             user={this.props.user}
@@ -70,7 +72,7 @@ class WMGoalContainer extends React.Component {
                 
                 </div>
                 )} */}
-      </div>
+      </React.Fragment>
     );
   }
 }
