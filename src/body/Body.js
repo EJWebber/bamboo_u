@@ -24,7 +24,7 @@ class Body extends React.Component {
         />
         <br />
         <br />
-        {/* <BodyHistory user={this.props.user} WBGs={this.props.WBGs} /> */}
+        <BodyHistory user={this.props.user} WBGs={this.props.WBGs} />
       </div>
     );
   }

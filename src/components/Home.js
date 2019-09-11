@@ -44,6 +44,7 @@ class Home extends React.Component {
             Mind
           </div>
         </div>
+        <div className="ground" />
       </div>
     );
   }

@@ -218,22 +218,6 @@ class App extends React.Component {
     });
   };
 
-  // dmTimeFilter = () => {
-  //   const a = moment();
-  //   return this.state.user.user_dm_goals.filter(goal =>
-  //     // a.diff(new Date(goal.created_at), 'days') <= 0
-  //     a.isSame(moment(goal.created_at), "day")
-  //   );
-  // };
-
-  // dbTimeFilter = () => {
-  //   const a = moment();
-  //   return this.state.user.user_db_goals.filter(goal =>
-  //     // a.diff(new Date(goal.created_at), 'days') <= 0
-  //     a.isSame(moment(goal.created_at), "day")
-  //   );
-  // };
-
   render() {
     return (
       <div className="App">
@@ -246,7 +230,7 @@ class App extends React.Component {
             />
           ) : (
             <div className="div">
-              <Button id="logout" onClick={this.logOut}>
+              <Button id="logout" onClick={this.logOut} size="mini">
                 Log Out
               </Button>
               <Button.Group id="navbar">
@@ -280,7 +264,6 @@ class App extends React.Component {
                   removeDMG={this.removeDMG}
                 />
               )}
-              <div className="ground" />
             </div>
           )}
         </header>

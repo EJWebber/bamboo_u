@@ -5,9 +5,15 @@ import MindHistory from "./history/MindHistory";
 import { Transition, Button } from "semantic-ui-react";
 
 class Mind extends React.Component {
+  state = { showHistory: false };
+
+  toggleShowHistory = () => {
+    this.setState({ showHistory: !this.state.showHistory });
+  };
+
   render() {
     return (
-      <div>
+      <div className="mind">
         <DMGoalContainer
           user={this.props.user}
           updateDMGoal={this.props.updateDMGoal}
@@ -24,7 +30,8 @@ class Mind extends React.Component {
         />
         <br />
         <br />
-        {/* <MindHistory user={this.props.user} WMGs={this.props.WMGs} /> */}
+
+        <MindHistory user={this.props.user} WMGs={this.props.WMGs} />
       </div>
     );
   }
