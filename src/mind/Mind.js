@@ -2,6 +2,7 @@ import React from "react";
 import DMGoalContainer from "./daily/DMGoalContainer";
 import WMGoalContainer from "./weekly/WMGoalContainer";
 import MindHistory from "./history/MindHistory";
+import { Transition, Button } from "semantic-ui-react";
 
 class Mind extends React.Component {
   render() {
@@ -19,7 +20,8 @@ class Mind extends React.Component {
           addDMGoal={this.props.addDMGoal}
           updateWMGoal={this.props.updateWMGoal}
         />
-        {/* <MindHistory user={this.props.user} WMGs={this.props.WMGs} /> */}
+
+        <MindHistory user={this.props.user} WMGs={this.props.WMGs} />
       </div>
     );
   }

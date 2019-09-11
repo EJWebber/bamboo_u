@@ -17,7 +17,7 @@ class DMGoalContainer extends React.Component {
         <Divider horizontal>
           <Header as="h2">Daily</Header>
         </Divider>
-        {/* {this.dmTimeFilter().length}/3 goals assigned: */}
+        {this.dmTimeFilter().length}/3 goals assigned:
         {this.dmTimeFilter().map(dmg => (
           <DMGoal
             dmg={dmg}

@@ -74,7 +74,7 @@ class WMGoal extends React.Component {
         )
         // {this.completedDGs().length}/{this.props.goal.number}
         }
-        <div>
+        <div className="progress">
           {filteredWMGs.activity} {this.props.goal.number} times
           <Progress
             // percent={

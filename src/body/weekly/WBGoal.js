@@ -59,6 +59,11 @@ class WBGoal extends React.Component {
     );
   };
 
+  deleteGoal = goal => {
+    API.deleteUserWBG(goal);
+    // this.props.removeWBG(goal)
+  };
+
   render() {
     const filteredWBGs = this.props.WBGs.filter(
       wbg => wbg.id === this.props.goal.wb_goal_id
@@ -81,8 +86,15 @@ class WBGoal extends React.Component {
           <Button size="mini" circular icon="circle outline" color="yellow" />
         )}
         {/* BREAK HERE */}
-        <div>
+        <div className="progressAct">
           {filteredWBGs.activity} for {this.props.goal.time} minutes total
+          <Button
+            size="mini"
+            circular
+            icon="cross"
+            color="red"
+            onClick={() => this.deleteGoal(this.props.goal)}
+          />
           <Progress
             // percent={(this.completedDGs() / this.props.goal.time) * 100}
             indicating

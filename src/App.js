@@ -197,7 +197,7 @@ class App extends React.Component {
               error={this.state.user}
             />
           ) : (
-            <div>
+            <div className="div">
               <Button id="logout" onClick={this.logOut}>
                 Log Out
               </Button>
@@ -206,58 +206,6 @@ class App extends React.Component {
                 <Button onClick={this.homeToggle}>Home</Button>
                 <Button onClick={this.Mtoggle}>Mind</Button>
               </Button.Group>
-
-              {/* {this.state.toggle ? (
-                <div>
-                  <h1>Mind</h1>
-                  <div className="dailygoals">
-                    <h2>Daily Goals</h2>
-                    {this.dmTimeFilter().map(dmg => (
-                      <DMGoal
-                        dmg={dmg}
-                        WMGs={this.state.WMGs}
-                        user={this.state.user}
-                        updateDMGoal={this.updateDMGoal}
-                      />
-                    ))}
-                  </div>
-                  <br />
-                  <WMGoalContainer
-                    WMGs={this.state.WMGs}
-                    user={this.state.user}
-                    addWMGoal={this.addWMGoal}
-                    addDMGoal={this.addDMGoal}
-                    updateWMGoal={this.updateWMGoal}
-                  />
-                  <br />
-                  <MindHistory user={this.state.user} WMGs={this.state.WMGs} />
-                </div>
-              ) : (
-                <div>
-                  <h1>Body</h1>
-                  <div className="dailygoals">
-                    <h2>Daily Goals</h2>{" "}
-                    {this.dbTimeFilter().map(dbg => (
-                      <DBGoal
-                        dbg={dbg}
-                        WBGs={this.state.WBGs}
-                        user={this.state.user}
-                        updateDBGoal={this.updateDBGoal}
-                      />
-                    ))}
-                  </div>
-                  <br />
-                  <WBGoalContainer
-                    WBGs={this.state.WBGs}
-                    user={this.state.user}
-                    addWBGoal={this.addWBGoal}
-                    addDBGoal={this.addDBGoal}
-                    updateWBGoal={this.updateWBGoal}
-                  />
-                  <br />
-                  <BodyHistory user={this.state.user} WBGs={this.state.WBGs} />
-                </div>
-              )} */}
 
               {this.state.homeToggle ? (
                 <Home user={this.state.user} />
@@ -280,6 +228,7 @@ class App extends React.Component {
                   updateWMGoal={this.updateWMGoal}
                 />
               )}
+              <div className="ground" />
             </div>
           )}
         </header>

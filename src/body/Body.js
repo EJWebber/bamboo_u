@@ -20,7 +20,7 @@ class Body extends React.Component {
           addDBGoal={this.props.addDBGoal}
           updateWBGoal={this.props.updateWBGoal}
         />
-        {/* <BodyHistory user={this.props.user} WBGs={this.props.WBGs} /> */}
+        <BodyHistory user={this.props.user} WBGs={this.props.WBGs} />
       </div>
     );
   }

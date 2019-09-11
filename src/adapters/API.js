@@ -103,6 +103,18 @@ const updateUserDBG = (goal, time) => {
   }).then(resp => resp.json(newGoal));
 };
 
+const deleteUserWBG = goal => {
+  return fetch(`${userWBGURL}/${goal.id}`, {
+    method: "DELETE"
+  });
+};
+
+const deleteUserWMG = goal => {
+  return fetch(`${userWMGURL}/${goal.id}`, {
+    method: "DELETE"
+  });
+};
+
 export default {
   fetchUser,
 
@@ -114,10 +126,12 @@ export default {
   postUserWMG,
   fetchUserWMG,
   updateUserWMG,
+  deleteUserWMG,
 
   postUserWBG,
   fetchUserWBG,
   updateUserWBG,
+  deleteUserWBG,
 
   postUserDMG,
   postUserDBG,

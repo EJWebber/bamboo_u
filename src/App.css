@@ -1,6 +1,7 @@
 body {
   width: 100%;
 }
+
 .App {
   text-align: center;
   overflow-y: scroll;
@@ -26,6 +27,10 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+}
+.div {
+  height: 100%;
+  width: 100%;
 }
 
 .App-link {
@@ -59,18 +64,6 @@ body {
   z-index: 999;
 }
 
-.dailygoals {
-  background-color: goldenrod;
-}
-
-.container {
-  background-color: tomato;
-}
-
-.history {
-  background-color: midnightblue;
-}
-
 .goals {
   min-width: 30%;
 }
@@ -87,6 +80,7 @@ body {
   position: absolute;
   bottom: 10%;
   left: 0;
+  z-index: 3;
 }
 
 .graph-2 {
@@ -94,21 +88,25 @@ body {
   position: absolute;
   right: 0;
   bottom: 10%;
+  z-index: 3;
 }
 
 .bamboo {
-  background-color: green;
+  background-image: url("./bamboo.png");
+  /* background-color: green; */
   border-radius: 20%;
-  border: 1px solid black;
-  z-index: 2;
-  height: 30px;
-  width: 10px;
+  /* border: 1px solid black; */
+  z-index: 3;
+  height: 3em;
+  width: 4em;
   margin: auto;
 }
 
 .bambooCane {
   position: relative;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .root-1 {
@@ -117,7 +115,7 @@ body {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
-  z-index: 2;
+  z-index: 3;
   height: 10px;
   width: 55%;
   left: 47%;
@@ -130,9 +128,42 @@ body {
   border-top: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
-  z-index: 2;
+  z-index: 3;
   height: 10px;
-  width: 55%;
-  right: 47%;
+  width: 60%;
+  right: 42%;
+  position: absolute;
+}
+
+.ground {
+  z-index: 0;
+  width: 100%;
+  height: 10%;
+  background-color: burlywood;
+  position: absolute;
+  bottom: 0;
+}
+
+.history {
+  z-index: 1;
+  width: 100%;
+  /* height: 10%; */
+  background-color: burlywood;
+  position: absolute;
+  /* bottom: 0; */
+  grid-column: auto;
+}
+
+.progressAct {
+  width: 70%;
+  left: 20%;
+  position: relative;
+}
+
+.graphDesc {
+  top: 15%;
+  width: 80%;
+  left: 10%;
+  text-align: center;
   position: absolute;
 }
