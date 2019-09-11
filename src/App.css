@@ -9,6 +9,7 @@ body {
   width: 100%;
   padding-right: 0px;
   z-index: 0;
+  font-family: "Raleway", sans-serif;
 }
 
 .App-logo {
@@ -120,6 +121,7 @@ body {
   width: 55%;
   left: 47%;
   position: absolute;
+  font-weight: 700;
 }
 
 .root-2 {
@@ -133,6 +135,7 @@ body {
   width: 60%;
   right: 42%;
   position: absolute;
+  font-weight: 700;
 }
 
 .ground {

@@ -1,5 +1,6 @@
 import React from "react";
 import Graph from "./Graph";
+import { Segment } from "semantic-ui-react";
 const moment = require("moment");
 class Home extends React.Component {
   completedUDMGs = () => {
@@ -24,10 +25,10 @@ class Home extends React.Component {
       <div className="test">
         {this.timeFilteredGoals(UDBGs).length < 5 &&
         this.timeFilteredGoals(UDMGs).length < 5 ? (
-          <div className="graphDesc">
+          <Segment raised className="graphDesc">
             Complete your goals to grow your bamboo. Try to complete Body and
             Mind goals to keep the heights of your bamboo the same.{" "}
-          </div>
+          </Segment>
         ) : null}
 
         <div className="graph-1">
