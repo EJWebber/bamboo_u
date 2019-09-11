@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Label, Grid } from "semantic-ui-react";
 import API from "../../adapters/API";
 
 class DMGoal extends React.Component {
@@ -27,32 +27,41 @@ class DMGoal extends React.Component {
 
   render() {
     return (
-      <div>
+      <Grid.Row>
         {this.props.dmg.complete ? (
-          <div>
-            <Button size="mini" circular icon="check" color="green" />
-            {this.filterForWMG().activity}
-          </div>
+          <>
+            <Grid.Column>
+              <Button size="mini" color="green">
+                Completed
+              </Button>
+            </Grid.Column>
+            <Grid.Column className="dailyAct">
+              {this.filterForWMG().activity}
+            </Grid.Column>
+          </>
         ) : (
-          <div>
-            <Button
-              size="mini"
-              circular
-              icon="check"
-              color="yellow"
-              onClick={this.handleClick}
-            />
-            {this.filterForWMG().activity}
-          </div>
+          <>
+            <Grid.Column>
+              <Button size="mini" color="yellow" onClick={this.handleClick}>
+                Completed?
+              </Button>
+            </Grid.Column>
+            <Grid.Column className="dailyAct">
+              {this.filterForWMG().activity}
+            </Grid.Column>
+          </>
         )}
-        <Button
-          size="mini"
-          circular
-          icon="close"
-          color="red"
-          onClick={() => this.deleteGoal(this.props.dmg)}
-        />
-      </div>
+        <Grid.Column className="dailyCross">
+          <Label
+            size="mini"
+            color="red"
+            floating
+            onClick={() => this.deleteGoal(this.props.dmg)}
+          >
+            x
+          </Label>
+        </Grid.Column>
+      </Grid.Row>
     );
   }
 }

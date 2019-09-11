@@ -22,10 +22,14 @@ class Home extends React.Component {
     const UDBGs = this.completedUDBGs();
     return (
       <div className="test">
-        <div className="graphDesc">
-          Complete your goals to grow your bamboo. Try to complete Body and Mind
-          goals to keep the heights of your bamboo the same.
-        </div>
+        {this.timeFilteredGoals(UDBGs).length < 5 &&
+        this.timeFilteredGoals(UDMGs).length < 5 ? (
+          <div className="graphDesc">
+            Complete your goals to grow your bamboo. Try to complete Body and
+            Mind goals to keep the heights of your bamboo the same.{" "}
+          </div>
+        ) : null}
+
         <div className="graph-1">
           <Graph dailyGoals={this.timeFilteredGoals(UDBGs)} />
           <div className="root-1">

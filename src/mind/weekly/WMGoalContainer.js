@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Header, Divider } from "semantic-ui-react";
+import { Button, Icon, Header, Divider, Grid } from "semantic-ui-react";
 import WMGoalForm from "./WMGoalForm";
 import WMGoal from "./WMGoal";
 const moment = require("moment");
@@ -11,27 +11,30 @@ class WMGoalContainer extends React.Component {
 
   WMList(timeFiltered) {
     return (
-      <>
+      <Grid columns={3} className="weeklyGrid">
         {/* {timeFiltered.length}/3 goals assigned: */}
         {timeFiltered.map(goal => (
-          <div>
-            <WMGoal
-              goal={goal}
-              WMGs={this.props.WMGs}
-              user={this.props.user}
-              key={goal.id}
-              addDMGoal={this.props.addDMGoal}
-              updateWMGoal={this.props.updateWMGoal}
-              removeWMG={this.props.removeWMG}
-            />
-          </div>
+          <WMGoal
+            goal={goal}
+            WMGs={this.props.WMGs}
+            user={this.props.user}
+            key={goal.id}
+            addDMGoal={this.props.addDMGoal}
+            updateWMGoal={this.props.updateWMGoal}
+            removeWMG={this.props.removeWMG}
+          />
         ))}
         {timeFiltered.length < 3 ? (
-          <Button onClick={this.showForm}>
-            Weekly Goal <Icon name="plus" />
-          </Button>
+          <Grid.Row>
+            <Grid.Column></Grid.Column>
+            <Grid.Column>
+              <Button onClick={this.showForm}>
+                Weekly Goal <Icon name="plus" />
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
         ) : null}
-      </>
+      </Grid>
     );
   }
 

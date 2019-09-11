@@ -1,6 +1,6 @@
 import React from "react";
 import DBGoal from "./DBGoal";
-import { Divider, Header } from "semantic-ui-react";
+import { Divider, Header, Grid } from "semantic-ui-react";
 const moment = require("moment");
 
 class DBGoalContainer extends React.Component {
@@ -17,17 +17,20 @@ class DBGoalContainer extends React.Component {
         <Divider horizontal>
           <Header as="h2">Daily</Header>
         </Divider>
-        {/* {this.dbTimeFilter().length}/3 goals assigned */}
-
-        {this.dbTimeFilter().map(dbg => (
-          <DBGoal
-            dbg={dbg}
-            user={this.props.user}
-            updateDBGoal={this.props.updateDBGoal}
-            WBGs={this.props.WBGs}
-            removeDBG={this.props.removeDBG}
-          />
-        ))}
+        {this.dbTimeFilter().length}/3 goals assigned
+        <br />
+        <br />
+        <Grid columns={4} className="dailyGrid">
+          {this.dbTimeFilter().map(dbg => (
+            <DBGoal
+              dbg={dbg}
+              user={this.props.user}
+              updateDBGoal={this.props.updateDBGoal}
+              WBGs={this.props.WBGs}
+              removeDBG={this.props.removeDBG}
+            />
+          ))}
+        </Grid>
       </React.Fragment>
     );
   }

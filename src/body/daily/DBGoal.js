@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Button } from "semantic-ui-react";
+import { Input, Button, Label, Grid } from "semantic-ui-react";
 import API from "../../adapters/API";
 
 class DBGoal extends React.Component {
@@ -37,37 +37,45 @@ class DBGoal extends React.Component {
 
   render() {
     return (
-      <div>
+      <Grid.Row>
         {this.props.dbg.complete ? (
-          <div>
-            <Button icon="check" size="mini" circular color="green" />
-            {this.filterForWBG().activity} - {this.props.dbg.time} mins
-          </div>
+          <>
+            <Grid.Column>
+              <Button size="mini" color="green">
+                Completed
+              </Button>
+            </Grid.Column>
+            <Grid.Column>{this.filterForWBG().activity}</Grid.Column>
+            <Grid.Column>{this.props.dbg.time} mins</Grid.Column>
+          </>
         ) : (
-          <div>
-            <Button
-              icon="check"
-              circular
-              size="mini"
-              color="yellow"
-              onClick={this.handleClick}
-            />
-            {this.filterForWBG().activity}
-            <Input
-              size="mini"
-              placeholder="time"
-              onChange={e => this.setTime(e)}
-            />
-          </div>
+          <>
+            <Grid.Column>
+              <Button size="mini" color="yellow" onClick={this.handleClick}>
+                Completed?
+              </Button>
+            </Grid.Column>
+            <Grid.Column>{this.filterForWBG().activity} </Grid.Column>{" "}
+            <Grid.Column>
+              <Input
+                size="mini"
+                placeholder="time"
+                onChange={e => this.setTime(e)}
+              />
+            </Grid.Column>
+          </>
         )}
-        <Button
-          size="mini"
-          circular
-          icon="close"
-          color="red"
-          onClick={() => this.deleteGoal(this.props.dbg)}
-        />
-      </div>
+        <Grid.Column>
+          <Label
+            color="red"
+            size="mini"
+            floating
+            onClick={() => this.deleteGoal(this.props.dbg)}
+          >
+            x
+          </Label>
+        </Grid.Column>
+      </Grid.Row>
     );
   }
 }

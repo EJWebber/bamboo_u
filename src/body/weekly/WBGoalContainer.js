@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Header, Divider } from "semantic-ui-react";
+import { Button, Icon, Header, Divider, Grid } from "semantic-ui-react";
 import WBGoalForm from "./WBGoalForm";
 import WBGoal from "./WBGoal";
 const moment = require("moment");
@@ -11,7 +11,7 @@ class WBGoalContainer extends React.Component {
 
   WBList(timeFiltered) {
     return (
-      <>
+      <Grid columns={3} className="weeklyGrid">
         {timeFiltered.map(goal => (
           <WBGoal
             goal={goal}
@@ -25,11 +25,16 @@ class WBGoalContainer extends React.Component {
         ))}
 
         {timeFiltered.length < 3 ? (
-          <Button onClick={this.showForm}>
-            Weekly Goal <Icon name="plus" />
-          </Button>
+          <Grid.Row>
+            <Grid.Column />
+            <Grid.Column>
+              <Button onClick={this.showForm}>
+                Weekly Goal <Icon name="plus" />
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
         ) : null}
-      </>
+      </Grid>
     );
   }
 

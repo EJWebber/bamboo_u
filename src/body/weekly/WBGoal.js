@@ -1,6 +1,6 @@
 import React from "react";
 // import CreateDBGoal from "./CreateDBGoal"
-import { Button, Progress } from "semantic-ui-react";
+import { Button, Progress, Label, Grid } from "semantic-ui-react";
 import API from "../../adapters/API";
 const moment = require("moment");
 
@@ -71,39 +71,44 @@ class WBGoal extends React.Component {
 
     // {this.completedDGs()}/{this.props.goal.time}
     return (
-      <div className="weeklyGoal">
-        {this.completedDGs() >= this.props.goal.time ? (
-          <Button size="mini" circular icon="check" color="green" />
-        ) : this.dbTimeFilter().length < 3 ? (
-          <Button
-            circular
-            icon="plus"
-            size="mini"
-            onClick={this.handleClick}
-            color="yellow"
-          />
-        ) : (
-          <Button size="mini" circular icon="circle outline" color="yellow" />
-        )}
+      <Grid.Row className="weeklyGoal">
+        <Grid.Column>
+          {this.completedDGs() >= this.props.goal.time ? (
+            <Button size="mini" color="green">
+              Completed
+            </Button>
+          ) : this.dbTimeFilter().length < 3 ? (
+            <Button size="mini" onClick={this.handleClick} color="yellow">
+              Daily Goal +
+            </Button>
+          ) : (
+            <Button size="mini" color="yellow">
+              3/3 Daily Goals
+            </Button>
+          )}
+        </Grid.Column>
         {/* BREAK HERE */}
-        <div className="progressAct">
+
+        <Grid.Column className="progressAct">
           {filteredWBGs.activity} for {this.props.goal.time} minutes total
-          <Button
-            size="mini"
-            circular
-            icon="close"
-            color="red"
-            onClick={() => this.deleteGoal(this.props.goal)}
-          />
+        </Grid.Column>
+        <Grid.Column>
           <Progress
-            // percent={(this.completedDGs() / this.props.goal.time) * 100}
             indicating
             value={this.completedDGs()}
             total={this.props.goal.time}
             progress="ratio"
           />
-        </div>
-      </div>
+          <Label
+            size="mini"
+            color="red"
+            floating
+            onClick={() => this.deleteGoal(this.props.goal)}
+          >
+            x
+          </Label>
+        </Grid.Column>
+      </Grid.Row>
     );
   }
 }

@@ -22,7 +22,9 @@ class Body extends React.Component {
           updateWBGoal={this.props.updateWBGoal}
           removeWBG={this.props.removeWBG}
         />
-        <BodyHistory user={this.props.user} WBGs={this.props.WBGs} />
+        <br />
+        <br />
+        {/* <BodyHistory user={this.props.user} WBGs={this.props.WBGs} /> */}
       </div>
     );
   }

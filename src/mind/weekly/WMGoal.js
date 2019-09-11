@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Progress } from "semantic-ui-react";
+import { Button, Progress, Label, Grid, GridColumn } from "semantic-ui-react";
 import API from "../../adapters/API";
 const moment = require("moment");
 
@@ -63,31 +63,28 @@ class WMGoal extends React.Component {
     )[0];
     // const timeFiltered = filteredWMGs.filter(goal => )
     return (
-      <div>
-        {this.completedDGs().length >= this.props.goal.number ? (
-          <Button color="green" size="mini" circular icon="check" />
-        ) : this.dmTimeFilter().length < 3 ? (
-          <Button
-            size="mini"
-            circular
-            icon="plus"
-            onClick={this.handleClick}
-            color="yellow"
-          />
-        ) : (
-          <Button size="mini" circular icon="circle outline" color="yellow" />
-        )
-        // {this.completedDGs().length}/{this.props.goal.number}
-        }
-        <div className="progress">
+      <Grid.Row className="weeklyGoal">
+        <Grid.Column>
+          {this.completedDGs().length >= this.props.goal.number ? (
+            <Button color="green" size="mini">
+              Completed
+            </Button>
+          ) : this.dmTimeFilter().length < 3 ? (
+            <Button size="mini" onClick={this.handleClick} color="yellow">
+              Daily Goal +
+            </Button>
+          ) : (
+            <Button size="mini" color="yellow">
+              3/3 Daily Goals
+            </Button>
+          )
+          // {this.completedDGs().length}/{this.props.goal.number}
+          }
+        </Grid.Column>
+        <Grid.Column className="progressAct">
           {filteredWMGs.activity} {this.props.goal.number} times
-          <Button
-            size="mini"
-            circular
-            icon="close"
-            color="red"
-            onClick={() => this.deleteGoal(this.props.goal)}
-          />
+        </Grid.Column>
+        <Grid.Column>
           <Progress
             // percent={
             //   (this.completedDGs().length / this.props.goal.number) * 100
@@ -96,9 +93,17 @@ class WMGoal extends React.Component {
             value={this.completedDGs().length}
             total={this.props.goal.number}
             progress="ratio"
-          />
-        </div>
-      </div>
+          />{" "}
+          <Label
+            size="mini"
+            color="red"
+            floating
+            onClick={() => this.deleteGoal(this.props.goal)}
+          >
+            x
+          </Label>
+        </Grid.Column>
+      </Grid.Row>
     );
   }
 }
