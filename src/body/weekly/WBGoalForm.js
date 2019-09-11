@@ -77,7 +77,7 @@ class WBGoalForm extends React.Component {
           onChange={e => this.dropdownChange(e)}
         />
         <br />
-        <Input labelPosition="right" type="text" placeholder="For how long?">
+        <Input labelPosition="right" type="number" placeholder="For how long?">
           <input onChange={e => this.setTime(e)}></input>
           <Label>minutes</Label>
         </Input>

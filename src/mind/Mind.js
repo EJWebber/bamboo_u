@@ -12,6 +12,7 @@ class Mind extends React.Component {
           user={this.props.user}
           updateDMGoal={this.props.updateDMGoal}
           WMGs={this.props.WMGs}
+          removeDMG={this.props.removeDMG}
         />
         <WMGoalContainer
           WMGs={this.props.WMGs}
@@ -19,6 +20,7 @@ class Mind extends React.Component {
           addWMGoal={this.props.addWMGoal}
           addDMGoal={this.props.addDMGoal}
           updateWMGoal={this.props.updateWMGoal}
+          removeWMG={this.props.removeWMG}
         />
 
         <MindHistory user={this.props.user} WMGs={this.props.WMGs} />

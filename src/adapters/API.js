@@ -115,6 +115,14 @@ const deleteUserWMG = goal => {
   });
 };
 
+const deleteUserDBG = goal => {
+  return fetch(`${userDBGURL}/${goal.id}`, { method: "DELETE" });
+};
+
+const deleteUserDMG = goal => {
+  return fetch(`${userDMGURL}/${goal.id}`, { method: "DELETE" });
+};
+
 export default {
   fetchUser,
 
@@ -137,5 +145,8 @@ export default {
   postUserDBG,
 
   updateUserDMG,
-  updateUserDBG
+  updateUserDBG,
+
+  deleteUserDMG,
+  deleteUserDBG
 };

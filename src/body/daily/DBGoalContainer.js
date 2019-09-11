@@ -25,6 +25,7 @@ class DBGoalContainer extends React.Component {
             user={this.props.user}
             updateDBGoal={this.props.updateDBGoal}
             WBGs={this.props.WBGs}
+            removeDBG={this.props.removeDBG}
           />
         ))}
       </React.Fragment>

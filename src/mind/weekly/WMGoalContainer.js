@@ -22,6 +22,7 @@ class WMGoalContainer extends React.Component {
               key={goal.id}
               addDMGoal={this.props.addDMGoal}
               updateWMGoal={this.props.updateWMGoal}
+              removeWMG={this.props.removeWMG}
             />
           </div>
         ))}

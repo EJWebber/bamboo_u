@@ -20,6 +20,7 @@ class WBGoalContainer extends React.Component {
             key={goal.id}
             addDBGoal={this.props.addDBGoal}
             updateWBGoal={this.props.updateWBGoal}
+            removeWBG={this.props.removeWBG}
           />
         ))}
 

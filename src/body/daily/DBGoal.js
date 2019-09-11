@@ -30,6 +30,11 @@ class DBGoal extends React.Component {
     });
   };
 
+  deleteGoal = goal => {
+    API.deleteUserDBG(goal);
+    this.props.removeDBG(goal);
+  };
+
   render() {
     return (
       <div>
@@ -55,6 +60,13 @@ class DBGoal extends React.Component {
             />
           </div>
         )}
+        <Button
+          size="mini"
+          circular
+          icon="close"
+          color="red"
+          onClick={() => this.deleteGoal(this.props.dbg)}
+        />
       </div>
     );
   }

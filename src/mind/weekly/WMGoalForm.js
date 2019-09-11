@@ -77,7 +77,11 @@ class WMGoalForm extends React.Component {
           onChange={e => this.dropdownChange(e)}
         />
         <br />
-        <Input labelPosition="right" type="text" placeholder="How many times?">
+        <Input
+          labelPosition="right"
+          type="number"
+          placeholder="How many times?"
+        >
           <input onChange={e => this.setTimes(e)}></input>
           <Label>times</Label>
         </Input>

@@ -20,6 +20,11 @@ class DMGoal extends React.Component {
     //
   };
 
+  deleteGoal = goal => {
+    API.deleteUserDMG(goal);
+    this.props.removeDMG(goal);
+  };
+
   render() {
     return (
       <div>
@@ -40,6 +45,13 @@ class DMGoal extends React.Component {
             {this.filterForWMG().activity}
           </div>
         )}
+        <Button
+          size="mini"
+          circular
+          icon="close"
+          color="red"
+          onClick={() => this.deleteGoal(this.props.dmg)}
+        />
       </div>
     );
   }

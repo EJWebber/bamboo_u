@@ -52,6 +52,11 @@ class WMGoal extends React.Component {
     );
   };
 
+  deleteGoal = goal => {
+    API.deleteUserWMG(goal);
+    this.props.removeWMG(goal);
+  };
+
   render() {
     const filteredWMGs = this.props.WMGs.filter(
       wmg => wmg.id === this.props.goal.wm_goal_id
@@ -76,6 +81,13 @@ class WMGoal extends React.Component {
         }
         <div className="progress">
           {filteredWMGs.activity} {this.props.goal.number} times
+          <Button
+            size="mini"
+            circular
+            icon="close"
+            color="red"
+            onClick={() => this.deleteGoal(this.props.goal)}
+          />
           <Progress
             // percent={
             //   (this.completedDGs().length / this.props.goal.number) * 100

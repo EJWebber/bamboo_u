@@ -11,6 +11,7 @@ class Body extends React.Component {
           user={this.props.user}
           updateDBGoal={this.props.updateDBGoal}
           WBGs={this.props.WBGs}
+          removeDBG={this.props.removeDBG}
         />
 
         <WBGoalContainer
@@ -19,6 +20,7 @@ class Body extends React.Component {
           addWBGoal={this.props.addWBGoal}
           addDBGoal={this.props.addDBGoal}
           updateWBGoal={this.props.updateWBGoal}
+          removeWBG={this.props.removeWBG}
         />
         <BodyHistory user={this.props.user} WBGs={this.props.WBGs} />
       </div>

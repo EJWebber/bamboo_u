@@ -24,6 +24,7 @@ class DMGoalContainer extends React.Component {
             user={this.props.user}
             updateDMGoal={this.props.updateDMGoal}
             WMGs={this.props.WMGs}
+            removeDMG={this.props.removeDMG}
           />
         ))}
       </React.Fragment>

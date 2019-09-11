@@ -61,7 +61,7 @@ class WBGoal extends React.Component {
 
   deleteGoal = goal => {
     API.deleteUserWBG(goal);
-    // this.props.removeWBG(goal)
+    this.props.removeWBG(goal);
   };
 
   render() {
@@ -91,7 +91,7 @@ class WBGoal extends React.Component {
           <Button
             size="mini"
             circular
-            icon="cross"
+            icon="close"
             color="red"
             onClick={() => this.deleteGoal(this.props.goal)}
           />

@@ -170,6 +170,54 @@ class App extends React.Component {
     });
   };
 
+  removeWBG = goal => {
+    const unfilteredWGoals = this.state.user.user_wb_goals;
+    const filteredWGoals = unfilteredWGoals.filter(uwbg => uwbg.id !== goal.id);
+    const unfilteredDGoals = this.state.user.user_db_goals;
+    const filteredDGoals = unfilteredDGoals.filter(
+      udbg => udbg.user_wb_goal_id !== goal.id
+    );
+    this.setState({
+      user: {
+        ...this.state.user,
+        user_wb_goals: filteredWGoals,
+        user_db_goals: filteredDGoals
+      }
+    });
+  };
+
+  removeDBG = goal => {
+    const unfilteredDGoals = this.state.user.user_db_goals;
+    const filteredDGoals = unfilteredDGoals.filter(udbg => udbg.id !== goal.id);
+    this.setState({
+      user: { ...this.state.user, user_db_goals: filteredDGoals }
+    });
+  };
+
+  removeWMG = goal => {
+    const unfilteredWGoals = this.state.user.user_wm_goals;
+    const filteredWGoals = unfilteredWGoals.filter(uwmg => uwmg.id !== goal.id);
+    const unfilteredDGoals = this.state.user.user_dm_goals;
+    const filteredDGoals = unfilteredDGoals.filter(
+      udmg => udmg.user_wm_goal_id !== goal.id
+    );
+    this.setState({
+      user: {
+        ...this.state.user,
+        user_wm_goals: filteredWGoals,
+        user_dm_goals: filteredDGoals
+      }
+    });
+  };
+
+  removeDMG = goal => {
+    const unfilteredDGoals = this.state.user.user_dm_goals;
+    const filteredDGoals = unfilteredDGoals.filter(udmg => udmg.id !== goal.id);
+    this.setState({
+      user: { ...this.state.user, user_dm_goals: filteredDGoals }
+    });
+  };
+
   // dmTimeFilter = () => {
   //   const a = moment();
   //   return this.state.user.user_dm_goals.filter(goal =>
@@ -217,6 +265,8 @@ class App extends React.Component {
                   addWBGoal={this.addWBGoal}
                   addDBGoal={this.addDBGoal}
                   updateWBGoal={this.updateWBGoal}
+                  removeWBG={this.removeWBG}
+                  removeDBG={this.removeDBG}
                 />
               ) : (
                 <Mind
@@ -226,6 +276,8 @@ class App extends React.Component {
                   addWMGoal={this.addWMGoal}
                   addDMGoal={this.addDMGoal}
                   updateWMGoal={this.updateWMGoal}
+                  removeWMG={this.removeWMG}
+                  removeDMG={this.removeDMG}
                 />
               )}
               <div className="ground" />

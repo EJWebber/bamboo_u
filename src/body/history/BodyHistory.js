@@ -1,6 +1,6 @@
 import React from "react";
-import DBGoal from "../daily/DBGoal";
-import { Grid, Button, Checkbox } from "semantic-ui-react";
+// import DBGoal from "../daily/DBGoal";
+import { Grid, Button } from "semantic-ui-react";
 const moment = require("moment");
 
 class BodyHistory extends React.Component {
@@ -11,6 +11,19 @@ class BodyHistory extends React.Component {
   completedUDBGs = () => {
     return this.props.user.user_db_goals.filter(udbg => udbg.complete === true);
   };
+
+  filterForUWBG = goal => {
+    return this.props.user.user_wb_goals.filter(
+      uwbgoal => uwbgoal.id === goal.user_wb_goal_id
+    )[0];
+  };
+
+  filterForWBG = goal => {
+    return this.props.WBGs.filter(
+      wbgoal => wbgoal.id === this.filterForUWBG(goal).wb_goal_id
+    )[0];
+  };
+
   completedUWBGs = () => {
     return this.props.user.user_wb_goals.filter(uwbg => uwbg.complete === true);
   };
@@ -40,12 +53,8 @@ class BodyHistory extends React.Component {
                   </Grid.Column>
 
                   <Grid.Column>
-                    <DBGoal
-                      dbg={goal}
-                      WBGs={this.props.WBGs}
-                      user={this.props.user}
-                      updateDBGoal={this.updateDBGoal}
-                    />
+                    <Button icon="check" size="mini" circular color="green" />
+                    {this.filterForWBG(goal).activity} - {goal.time} mins
                   </Grid.Column>
                 </Grid.Row>
               ))}
