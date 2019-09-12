@@ -1,5 +1,5 @@
 import React from "react";
-import bamboo from "/Users/Ed/development/module_5/bamboo_u_front/src/bamboo.png";
+import bamboo from "./bamboo.png";
 
 class Graph extends React.Component {
   renderBamboo = array => {
