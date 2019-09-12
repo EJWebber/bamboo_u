@@ -93,7 +93,7 @@ body {
 }
 
 .bamboo {
-  background-image: url("./bamboo.png");
+  /* background-image: url("./bamboo.png"); */
   /* background-color: green; */
   border-radius: 20%;
   /* border: 1px solid black; */
