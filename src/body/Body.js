@@ -2,7 +2,7 @@ import React from "react";
 import DBGoalContainer from "./daily/DBGoalContainer";
 import WBGoalContainer from "./weekly/WBGoalContainer";
 import BodyHistory from "./history/BodyHistory";
-import { Header } from "semantic-ui-react";
+// import { Header } from "semantic-ui-react";
 class Body extends React.Component {
   render() {
     return (

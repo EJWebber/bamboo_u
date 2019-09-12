@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Progress, Label, Grid, GridColumn } from "semantic-ui-react";
+import { Button, Progress, Label, Grid } from "semantic-ui-react";
 import API from "../../adapters/API";
 const moment = require("moment");
 

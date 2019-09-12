@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3000";
+const baseURL = "https://bamboo-u-backend.herokuapp.com";
 const versionURL = `${baseURL}/api/v1`;
 const usersURL = `${versionURL}/users`;
 const wbgURL = `${versionURL}/wb_goals`;

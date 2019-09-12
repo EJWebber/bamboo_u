@@ -23,8 +23,8 @@ class Home extends React.Component {
     const UDBGs = this.completedUDBGs();
     return (
       <div className="test">
-        {this.timeFilteredGoals(UDBGs).length < 5 &&
-        this.timeFilteredGoals(UDMGs).length < 5 ? (
+        {this.timeFilteredGoals(UDBGs).length < 3 &&
+        this.timeFilteredGoals(UDMGs).length < 3 ? (
           <Segment raised className="graphDesc">
             Complete your goals to grow your bamboo. Try to complete Body and
             Mind goals to keep the heights of your bamboo the same.{" "}

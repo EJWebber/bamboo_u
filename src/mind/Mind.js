@@ -2,7 +2,7 @@ import React from "react";
 import DMGoalContainer from "./daily/DMGoalContainer";
 import WMGoalContainer from "./weekly/WMGoalContainer";
 import MindHistory from "./history/MindHistory";
-import { Transition, Button } from "semantic-ui-react";
+// import { Transition, Button } from "semantic-ui-react";
 
 class Mind extends React.Component {
   state = { showHistory: false };
